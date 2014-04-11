@@ -1,0 +1,52 @@
+<?php
+define('HOST','localhost');
+define('login','root');
+define('pass','');
+define('bdd','gestionprojet');
+mysql_connect(HOST,login,pass)or die('erreur de connexion');
+mysql_select_db(bdd);
+//$id_cp='c11';
+
+  $id_projet_session = new Zend_Session_Namespace('projet'); 
+  $id_chef = new Zend_Session_Namespace('chef');
+
+  $s="SELECT  id_projet from chef_projet where id_compte='".$id_chef ->id."'";
+$r=mysql_query($s)or die(mysql_error());
+$d = mysql_fetch_row($r);
+$id_projet_session->id=  $d[0];
+
+//echo $id_projet_session->id;
+//echo $id_chef->id;
+$sql="SELECT description_tache ,duree_tache,tache.etat FROM `tache`,projet where projet.id_projet=tache.id_projet  and projet.id_projet ='".$id_projet_session->id."'";
+$req=mysql_query($sql)or die(mysql_error());
+//while ($donnees = mysql_fetch_row($req))
+//{echo $donnees[0];
+//}
+?>
+<html>
+<body>
+	<table border=1>
+		<caption>Lister le projet </caption>
+		<tr ALIGN=CENTER>
+			<th>Nom de la tache</th>
+			<th>Duree </th>
+			<th>Etat  </th>
+			
+		</tr>
+		
+			<?php while ($donnees = mysql_fetch_row($req))
+		{?>
+		<tr ALIGN=CENTER>
+			
+		
+			<td><?php echo $donnees[0];?></td>
+			<td><?php echo $donnees[1];?></td>
+			<td><?php echo $donnees[2];?></td>
+			
+
+			</tr>
+		<?php }?>
+		
+	</table>
+	</body>
+</html>

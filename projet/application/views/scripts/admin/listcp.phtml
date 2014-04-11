@@ -1,0 +1,40 @@
+<?php
+define('HOST','localhost');
+define('login','root');
+define('pass','');
+define('bdd','gestionprojet');
+mysql_connect(HOST,login,pass)or die('erreur de connexion');
+mysql_select_db(bdd);
+$sql='select*from chef_projet';
+$req=mysql_query($sql)or die(mysql_error());
+//while ($donnees = mysql_fetch_row($req))
+//{echo $donnees[0];
+//}
+?>
+<html>
+<body>
+	<table border=1>
+		<caption>Liste des chefs de projet </caption>
+		<tr ALIGN=CENTER>
+			<th>Nom </th>
+			<th>Prenom </th>
+			<th>Equipe </th>
+			<th>projet affecte </th>
+			
+		</tr>
+		
+			<?php while ($donnees = mysql_fetch_row($req))
+		{?>
+		<tr ALIGN=CENTER>
+			
+			<td><?php echo $donnees[4];?></td>
+			<td><?php echo $donnees[5];?></td>
+			<td><?php echo $donnees[2];?></td>
+			<td><?php echo $donnees[3];?></td>
+			
+			</tr>
+		<?php }?>
+		
+	</table>
+	</body>
+</html>

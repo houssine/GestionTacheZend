@@ -1,0 +1,64 @@
+<?php
+define('HOST','localhost');
+define('login','root');
+define('pass','');
+define('bdd','gestionprojet');
+mysql_connect(HOST,login,pass)or die('erreur de connexion');
+mysql_select_db(bdd);
+ Zend_Session::start();
+ $id_equip = new Zend_Session_Namespace('id_equipe'); 
+    $defaultNamespace = new Zend_Session_Namespace('chef'); 
+    $sql="select equipe.id_equipe from chef_projet,equipe where equipe.id_cp=chef_projet.id_cp and chef_projet.id_compte ='".$defaultNamespace->id."'";
+$req=mysql_query($sql)or die(mysql_error());
+ $donnees = mysql_fetch_row($req);
+$id_equip->id= $donnees[0];
+    //echo 'id :'.$defaultNamespace->id;
+$sql="SELECT nom_cp,prenom_cp,situation_cp,chef_projet.id_equipe,chef_projet.id_projet FROM chef_projet,projet,equipe where  chef_projet.id_projet =projet.id_projet and  chef_projet.id_equipe= equipe.id_equipe and equipe.id_equipe ='".$id_equip->id."'";
+$req=mysql_query($sql)or die(mysql_error());
+//while ($donnees = mysql_fetch_row($req))
+//{echo $donnees[0];
+//}
+?>
+<html>
+<body>
+	<center>
+<br><br><br><br><ul>Vous touvez ci dessous Votre profil :</ul><br><br> 
+
+	<table>
+		
+		
+		
+			<?php while ($donnees = mysql_fetch_row($req))
+				//echo $id_compte ;
+		{?>
+		<tr >
+		
+		
+		
+			 <td>Nom</td><td>
+            <input name="nom_cp" type="text" required id="nom_cp" value="<?php echo $donnees[0];?>" size="25" readonly></td></tr><tr>
+
+			<td>Prenom</td><td><input name="prenom_cp" type="text" required id="prenom_cp" value="<?php  echo $donnees[1] ;?>" size="25" readonly></td></tr>
+			
+			<tr><td>Equipe affectee:</td>
+            <td><input name="id_equipe" type="text" required id="id_equipe" value="<?php echo $donnees[3];?>" size="25" readonly></td></tr>
+          <tr>
+            <td>Situation familiale :</td>
+            <td>
+            <input name="situation_cp" type="text" required id="situation_cp"value="<?php echo $donnees[2];?>" size="25" readonly></td><tr>
+         
+      
+            <td>projet affecte</td>
+            <td>
+            <input name="id_projet" type="text" required id="id_projet"value="<?php echo $donnees[4];?>" size="25" readonly></td>
+          </tr>
+
+			</tr>
+
+			
+		<?php }?>
+		
+	</table>
+</center>
+	</body>
+</html>

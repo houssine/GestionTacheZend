@@ -1,0 +1,63 @@
+<?php
+define('HOST','localhost');
+define('login','root');
+define('pass','');
+define('bdd','gestionprojet');
+mysql_connect(HOST,login,pass)or die('erreur de connexion');
+mysql_select_db(bdd);
+ Zend_Session::start();
+  $session_profil = new Zend_Session_Namespace('profil'); 
+
+    $defaultNamespace = new Zend_Session_Namespace('User'); 
+    //echo $defaultNamespace->id;
+   
+$sql="SELECT nom_collaborateur,prenom_collaborateur,fonction_collaborateur,situation_collaborateur,id_tache  FROM collaborateur,compte where compte.id_compte=collaborateur.id_compte and collaborateur.id_compte ='".$defaultNamespace->id."'";
+
+
+$req=mysql_query($sql)or die(mysql_error());
+
+
+?>
+<html>
+<body>
+	<center>
+<br><br><br><br><ul>Vous touvez ci dessous Votre profil :</ul><br><br> 
+
+	<table>
+		
+		
+		
+			<?php while ($donnees = mysql_fetch_row($req))
+				//echo $id_compte ;
+		{?>
+		<tr >
+		
+		
+		
+			 <td>Nom</td><td>
+            <input name="nom_collaborateur" type="text" required id="nom_collaborateur" value="<?php echo $donnees[0];?>" size="25" readonly></td></tr><tr>
+
+			<td>Prenom</td><td><input name="prenom_collaborateur" type="text" required id="prenom_collaborateur" value="<?php  echo $donnees[1] ;?>" size="25" readonly></td></tr>
+			
+			<tr><td>Fonction dans l'entreprise:</td>
+            <td><input name="fonction_collaborateur" type="text" required id="fonction_collaborateur" value="<?php echo $donnees[2];?>" size="25" readonly></td></tr>
+          <tr>
+            <td>Situation:</td>
+            <td>
+            <input name="situation_collaborateur" type="text" required id="situation_collaborateur"value="<?php echo $donnees[3];?>" size="25" readonly></td>
+          </tr>
+          <tr>
+            <td>Tache allouee</td>
+            <td>
+            <input name="tache" type="text" required id="tache"value="<?php echo $donnees[4];?>" size="25" readonly></td>
+          </tr>
+
+			</tr>
+
+			
+		<?php }?>
+		
+	</table>
+</center>
+	</body>
+</html>
