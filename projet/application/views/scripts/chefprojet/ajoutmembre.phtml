@@ -1,0 +1,77 @@
+<?php
+Zend_Session::start();
+$id_chef = new Zend_Session_Namespace('chef'); 
+
+Zend_Session::start();
+             $nom_collab = new Zend_Session_Namespace('nom_collaborateur'); 
+        $nom_collab->id;
+  $prenom_collab = new Zend_Session_Namespace('prenom_collaborateur');
+     $prenom_collab->id;
+define('HOST','localhost');
+define('login','root');
+define('pass','');
+define('bdd','gestionprojet');
+mysql_connect(HOST,login,pass)or die('erreur de connexion');
+mysql_select_db(bdd);
+//$id_cp='c11';
+$sql='select nom_collaborateur,prenom_collaborateur,fonction_collaborateur from collaborateur where id_equipe is null';
+$req=mysql_query($sql)or die(mysql_error());
+//while ($donnees = mysql_fetch_row($req))
+//{echo $donnees[0];
+//}
+?>
+<html>
+
+<body>
+	<div>
+	<table border=1>
+		<caption>Liste des collaborateur disponible </caption>
+		<tr ALIGN=CENTER>
+			<th>Nom de collaborateur</th>
+			<th>Prenom de collaborateur </th>
+			<th>fonction_collaborateur  </th>
+			
+		</tr>
+		
+			<?php while ($donnees = mysql_fetch_row($req))
+		{?>
+		<tr ALIGN=CENTER>
+			
+		
+			<td><?php echo $donnees[0];?></td>
+			<td><?php echo $donnees[1];?></td>
+			<td><?php echo $donnees[2];?></td>
+			
+
+			</tr>
+		<?php }?>
+		<?php
+		if(isset($nom_collab->id)and($prenom_collab->id)){
+		 $sql="SELECT id_collaborateur FROM `collaborateur` WHERE nom_collaborateur='".$nom_collab->id."'and prenom_collaborateur='".$prenom_collab->id."'";
+$req=mysql_query($sql)or die(mysql_error());
+$donnees = mysql_fetch_row($req);
+$id_collab = new Zend_Session_Namespace('id_collaborateur');
+$id_collab->id=  $donnees[0];
+$s="SELECT  id_equipe from chef_projet where id_compte='".$id_chef ->id."'";
+$r=mysql_query($s)or die(mysql_error());
+$d = mysql_fetch_row($r);
+$id_equip = new Zend_Session_Namespace('id_equipe');
+$id_equip->id=  $d[0];
+
+}
+		?>
+	</table>
+</div>
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="<?php echo $this->baseUrl ?>/scripts/scriptjs.js">-->
+
+	</script>
+	</body>
+</html>
+<html>
+<body>
+
+	</body>
+</html>
+<?php
+echo $this -> form;

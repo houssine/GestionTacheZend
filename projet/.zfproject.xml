@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<projectProfile type="default" version="1.12.4">
+  <projectDirectory>
+    <projectProfileFile filesystemName=".zfproject.xml"/>
+    <applicationDirectory classNamePrefix="Application_">
+      <configsDirectory>
+        <applicationConfigFile type="ini"/>
+      </configsDirectory>
+      <controllersDirectory>
+        <controllerFile controllerName="Index">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="ccontroller"/>
+          <actionMethod actionName="accueilcollab"/>
+        </controllerFile>
+        <controllerFile controllerName="Error"/>
+        <controllerFile controllerName="Authentification">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="login"/>
+          <actionMethod actionName="logout"/>
+        </controllerFile>
+        <controllerFile controllerName="Collabcontroller">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="log"/>
+        </controllerFile>
+        <controllerFile controllerName="Collab">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="cb"/>
+          <actionMethod actionName="logout"/>
+          <actionMethod actionName="menucollab"/>
+          <actionMethod actionName="accueilcollab"/>
+          <actionMethod actionName="menu"/>
+          <actionMethod actionName="accueil"/>
+          <actionMethod actionName="profil"/>
+          <actionMethod actionName="consultation"/>
+          <actionMethod actionName="matache"/>
+          <actionMethod actionName="pourtache"/>
+        </controllerFile>
+        <controllerFile controllerName="Chefprojet">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="cp"/>
+          <actionMethod actionName="gestionprojet"/>
+        </controllerFile>
+        <controllerFile controllerName="Con">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="accueil"/>
+        </controllerFile>
+      </controllersDirectory>
+      <formsDirectory>
+        <formFile formName="Cp"/>
+        <formFile formName="Cp"/>
+        <formFile formName="LoginForm"/>
+        <formFile formName="Adminaccueil"/>
+        <formFile formName="Accueil"/>
+        <formFile formName="Gestion"/>
+        <formFile formName="Gestioncp"/>
+        <formFile formName="Gestioncb"/>
+        <formFile formName="Gestionchef"/>
+        <formFile formName="Modifprojet"/>
+        <formFile formName="Ajoutchef"/>
+        <formFile formName="Ajoutcollab"/>
+        <formFile formName="Updatecp"/>
+        <formFile formName="Modifcp"/>
+        <formFile formName="Suppcp"/>
+        <formFile formName="Updatecb"/>
+        <formFile formName="Modifcb"/>
+        <formFile formName="Suppcb"/>
+        <formFile formName="Gestionprojet"/>
+        <formFile formName="Listerprojet"/>
+        <formFile formName="Modifprojet"/>
+        <formFile formName="Ajouttache"/>
+        <formFile formName="Updatetache"/>
+        <formFile formName="Modiftache"/>
+        <formFile formName="Accueilcollab"/>
+        <formFile formName="Menucollab"/>
+        <formFile formName="Profil"/>
+        <formFile formName="Consultation"/>
+        <formFile formName="Matache"/>
+        <formFile formName="Pourtache"/>
+        <formFile formName="Supmembre"/>
+        <formFile formName="Profilcp"/>
+      </formsDirectory>
+      <layoutsDirectory enabled="false"/>
+      <modelsDirectory>
+        <modelFile modelName="Cp"/>
+        <dbTableDirectory>
+          <dbTableFile dbTableName="User"/>
+          <dbTableFile dbTableName="Cp"/>
+        </dbTableDirectory>
+        <modelFile modelName="Register"/>
+      </modelsDirectory>
+      <modulesDirectory enabled="false"/>
+      <servicesDirectory enabled="false"/>
+      <viewsDirectory>
+        <viewScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Error">
+            <viewScriptFile forActionName="error"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Authentification">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Authentification">
+            <viewScriptFile forActionName="login"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Authentification">
+            <viewScriptFile forActionName="logout"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Collabcontroller">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="ccontroller"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Collabcontroller">
+            <viewScriptFile forActionName="log"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Collab">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Collab">
+            <viewScriptFile forActionName="cb"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Chefprojet">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Chefprojet">
+            <viewScriptFile forActionName="cp"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Collab">
+            <viewScriptFile forActionName="logout"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Con">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Con">
+            <viewScriptFile forActionName="accueil"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Chefprojet">
+            <viewScriptFile forActionName="gestionprojet"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Collab">
+            <viewScriptFile forActionName="menucollab"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Collab">
+            <viewScriptFile forActionName="accueilcollab"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Collab">
+            <viewScriptFile forActionName="menu"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="accueilcollab"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Collab">
+            <viewScriptFile forActionName="accueil"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Collab">
+            <viewScriptFile forActionName="profil"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Collab">
+            <viewScriptFile forActionName="consultation"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Collab">
+            <viewScriptFile forActionName="matache"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Collab">
+            <viewScriptFile forActionName="pourtache"/>
+          </viewControllerScriptsDirectory>
+        </viewScriptsDirectory>
+        <viewHelpersDirectory/>
+        <viewFiltersDirectory enabled="false"/>
+      </viewsDirectory>
+      <bootstrapFile filesystemName="Bootstrap.php"/>
+    </applicationDirectory>
+    <dataDirectory enabled="false">
+      <cacheDirectory enabled="false"/>
+      <searchIndexesDirectory enabled="false"/>
+      <localesDirectory enabled="false"/>
+      <logsDirectory enabled="false"/>
+      <sessionsDirectory enabled="false"/>
+      <uploadsDirectory enabled="false"/>
+    </dataDirectory>
+    <docsDirectory>
+      <file filesystemName="README.txt"/>
+    </docsDirectory>
+    <libraryDirectory>
+      <zfStandardLibraryDirectory enabled="false"/>
+    </libraryDirectory>
+    <publicDirectory>
+      <publicStylesheetsDirectory enabled="false"/>
+      <publicScriptsDirectory enabled="false"/>
+      <publicImagesDirectory enabled="false"/>
+      <publicIndexFile filesystemName="index.php"/>
+      <htaccessFile filesystemName=".htaccess"/>
+    </publicDirectory>
+    <projectProvidersDirectory enabled="false"/>
+    <temporaryDirectory enabled="false"/>
+    <testsDirectory>
+      <testPHPUnitConfigFile filesystemName="phpunit.xml"/>
+      <testPHPUnitBootstrapFile filesystemName="bootstrap.php"/>
+      <testApplicationDirectory>
+        <testApplicationControllerDirectory>
+          <testApplicationControllerFile forControllerName="Index"/>
+        </testApplicationControllerDirectory>
+      </testApplicationDirectory>
+      <testLibraryDirectory/>
+    </testsDirectory>
+  </projectDirectory>
+</projectProfile>

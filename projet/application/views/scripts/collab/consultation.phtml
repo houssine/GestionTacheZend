@@ -1,0 +1,97 @@
+<?php
+define('HOST','localhost');
+define('login','root');
+define('pass','');
+define('bdd','gestionprojet');
+mysql_connect(HOST,login,pass)or die('erreur de connexion');
+mysql_select_db(bdd);
+Zend_Session::start();
+
+
+// avoir id_equipe depuis collabo
+$defaultNamespace = new Zend_Session_Namespace('User'); 
+//echo $defaultNamespace->id;
+ $session_profil = new Zend_Session_Namespace('profil');
+$a="SELECT id_equipe from collaborateur where id_compte = '".$defaultNamespace ->id."'";
+$x=mysql_query($a)or die(mysql_error());
+$s1 = mysql_fetch_row($x);
+$id_equipe=$s1[0];
+
+//echo 'id_equip : '.$id_equipe;
+//$id_cp='c11';
+// id_cp
+$b="SELECT chef_projet.id_cp from chef_projet,equipe where chef_projet.id_equipe=equipe.id_equipe and chef_projet.id_equipe='".$id_equipe."'";
+$y=mysql_query($b)or die(mysql_error());
+$s2 = mysql_fetch_row($y);
+$id_cp=$s2[0];
+
+//echo 'id_cp : '.$id_cp;
+
+$c="SELECT chef_projet.id_projet from chef_projet,projet where chef_projet.id_projet = projet.id_projet and chef_projet.id_cp ='".$id_cp."'";
+$z=mysql_query($c)or die(mysql_error());
+$s3 = mysql_fetch_row($z);
+$id_projet=$s3[0];
+
+//echo 'id_projet : '.$id_projet;
+
+
+
+
+
+
+$sql="SELECT projet.etat,description_tache ,duree_tache,tache.etat FROM tache,projet where projet.id_projet=tache.id_projet and tache.id_projet='".$id_projet."'";
+
+
+$req=mysql_query($sql)or die(mysql_error());
+
+//}
+?>
+<html>
+<body>
+	<center>
+<br><br><br><br><ul>Vous touvez ci dessous Les etats d'avancement des taches constituant le projet qui vous est affectee :</ul><br><br>
+<?php $donnees = mysql_fetch_row($req)
+?>
+   <table>
+   	<tr><td>Etat d'avancement du projet :</td> <td><input name="etat" type="text" required id="etat" value="<?php echo $donnees[0];?>" size="25" readonly></td></tr>
+   </table>
+  
+
+	<table border=1>
+		<tr ALIGN=CENTER>
+			
+			<th>Nom de la tache</th>
+			<th>Duree </th>
+			<th>Etat  </th>
+			
+		</tr>
+
+		<?php
+$sql2="SELECT projet.etat,description_tache ,duree_tache,tache.etat FROM tache,projet where projet.id_projet=tache.id_projet and tache.id_projet='".$id_projet."'";
+
+
+$req2=mysql_query($sql2)or die(mysql_error());
+
+
+		 while ($donnees = mysql_fetch_row($req2))
+{?>
+		
+		
+			
+		<tr ALIGN=CENTER>
+			
+		   
+			<td><?php echo $donnees[1];?></td>
+			<td><?php echo $donnees[2];?></td>
+			<td><?php echo $donnees[3];?></td>
+			
+
+			</tr>
+
+			
+		<?php }?>
+		
+	</table>
+</center>
+	</body>
+</html>
